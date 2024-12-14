@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Renderer</title>
+    <style>
+        .json-key { font-weight: bold; }
+        .json-value { margin-left: 20px; }
+        .json-object, .json-array { margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>JSON Data Renderer</h1>
+    <div id="json-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('content.json')
+                .then(response => response.json())
+                .then(data => renderJSON(data, document.getElementById('json-container')))
+                .catch(error => console.error('Error loading the JSON file:', error));
+        });
+
+        function renderJSON(json, container) {
+            if (Array.isArray(json)) {
+                const arrayElement = document.createElement('div');
+                arrayElement.classList.add('json-array');
+                json.forEach(item => renderJSON(item, arrayElement));
+                container.appendChild(arrayElement);
+            } else if (typeof json === 'object' && json !== null) {
+                const objectElement = document.createElement('div');
+                objectElement.classList.add('json-object');
+                for (const key in json) {
+                    if (json.hasOwnProperty(key)) {
+                        const keyElement = document.createElement('div');
+                        keyElement.classList.add('json-key');
+                        keyElement.textContent = key + ':';
+                        objectElement.appendChild(keyElement);
+                        renderJSON(json[key], objectElement);
+                    }
+                }
+                container.appendChild(objectElement);
+            } else {
+                const valueElement = document.createElement('div');
+                valueElement.classList.add('json-value');
+                valueElement.textContent = json;
+                container.appendChild(valueElement);
+            }
+        }
+    </script>
+</body>
+</html>

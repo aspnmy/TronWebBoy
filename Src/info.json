@@ -1,0 +1,106 @@
+{
+    "data": [
+        {
+            "owner_permission": {
+                "keys": [
+                    {
+                        "address": "TN1NtArNJw4mso1nB8P3dmBQdf88888888",
+                        "weight": 5
+                    },
+                    {
+                        "address": "TKqTUNcBWiRDdczuHoQstMD4XRyFgNwHiF",
+                        "weight": 10
+                    }
+                ],
+                "threshold": 10,
+                "permission_name": "Owner"
+            },
+            "account_resource": {
+                "energy_window_optimized": true,
+                "latest_consume_time_for_energy": 1731237786000,
+                "energy_window_size": 28800000
+            },
+            "active_permission": [
+                {
+                    "operations": "77ff07c0023ec307000000000000000000000000000000000000000000000000",
+                    "keys": [
+                        {
+                            "address": "TN1NtArNJw4mso1nB8P3dmBQdf88888888",
+                            "weight": 5
+                        },
+                        {
+                            "address": "TKqTUNcBWiRDdczuHoQstMD4XRyFgNwHiF",
+                            "weight": 10
+                        }
+                    ],
+                    "threshold": 10,
+                    "id": 2,
+                    "type": "Active",
+                    "permission_name": "Active"
+                }
+            ],
+            "address": "41840a96fb19edb59b6f0e44a548f78d15c16ba557",
+            "create_time": 1728735537000,
+            "latest_opration_time": 1731237660000,
+            "free_asset_net_usageV2": [
+                {
+                    "value": 0,
+                    "key": "1005050"
+                },
+                {
+                    "value": 0,
+                    "key": "1005027"
+                },
+                {
+                    "value": 0,
+                    "key": "1005041"
+                },
+                {
+                    "value": 0,
+                    "key": "1005026"
+                }
+            ],
+            "assetV2": [
+                {
+                    "value": 10000,
+                    "key": "1005050"
+                },
+                {
+                    "value": 8888880000,
+                    "key": "1005027"
+                },
+                {
+                    "value": 8888880000,
+                    "key": "1005026"
+                },
+                {
+                    "value": 11000,
+                    "key": "1005041"
+                }
+            ],
+            "frozenV2": [
+                {},
+                {
+                    "type": "ENERGY"
+                },
+                {
+                    "type": "UNKNOWN_ENUM_VALUE_ResourceCode_2"
+                }
+            ],
+            "balance": 54185892,
+            "trc20": [
+                {
+                    "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t": "9000000"
+                }
+            ],
+            "latest_consume_free_time": 1731237660000,
+            "net_window_size": 28800000,
+            "net_window_optimized": true
+        }
+    ],
+    "success": true,
+    "meta": {
+        "at": 1734172226987,
+        "page_size": 1
+    }
+}

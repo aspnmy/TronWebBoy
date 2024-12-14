@@ -1,0 +1,24 @@
+{
+  "wallet_address": "TN1NtArNJw4mso1nB8P3dmBQdf88888888",
+  "data": [
+    {
+      "TRC20合约地址": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+      "USDT余额": "9.000000",
+      "TRX余额": "54.185892"
+    },
+    [
+      {
+        "地址": "TN1NtArNJw4mso1nB8P3dmBQdf88888888",
+        "权重": 5
+      },
+      {
+        "地址": "TKqTUNcBWiRDdczuHoQstMD4XRyFgNwHiF",
+        "权重": 10
+      }
+    ],
+    {
+      "创建时间": "2024-10-12 12:18:57 UTC",
+      "最新操作时间": "2024-11-10 11:21:00 UTC"
+    }
+  ]
+}

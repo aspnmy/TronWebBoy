@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@api/tron": "file:.api/apis/tron",
+    "npx": "^10.2.2",
+    "nvm": "^0.0.4",
+    "yarn": "^1.22.22"
+  }
+}

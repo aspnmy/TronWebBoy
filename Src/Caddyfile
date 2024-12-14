@@ -1,0 +1,13 @@
+:9090 {
+    handle / {
+        redir /content.json
+    }
+    handle /content.json {
+        file_server {
+            root /home/coder/TronWebBoy/Src/web_logs
+        }
+    }
+    handle / {
+        respond "Not Found" 404
+    }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address File Uploader and JSON Renderer</title>
+    <style>
+        #json-container {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .json-array, .json-object {
+            margin-left: 20px;
+        }
+        .json-key {
+            font-weight: bold;
+        }
+        .json-value {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Address File Uploader and JSON Renderer</h1>
+    <div>
+        <input type="file" id="fileInput" accept=".txt">
+        <button id="uploadButton">Upload TXT File</button>
+    </div>
+    <div id="json-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('fileInput');
+            const uploadButton = document.getElementById('uploadButton');
+            const jsonContainer = document.getElementById('json-container');
+
+            uploadButton.addEventListener('click', function() {
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const content = e.target.result;
+                        const addresses = content.split('\n').map(addr => addr.trim()).filter(addr => addr);
+                        const jsonContent = { "address": addresses.join(",") };
+                        saveFile(jsonContent);
+                    };
+                    reader.readAsText(file);
+                }
+            });
+
+            function saveFile(content) {
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                const blob = new Blob([JSON.stringify(content)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `up_jsonfile_${timestamp}.json`;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                renderContentJSON();
+            }
+
+            function renderContentJSON() {
+                fetch('./content.json')
+                    .then(response => response.json())
+                    .then(data => renderJSON(data, jsonContainer))
+                    .catch(error => console.error('Error loading the JSON file:', error));
+            }
+
+            function renderJSON(json, container) {
+                if (Array.isArray(json)) {
+                    const arrayElement = document.createElement('div');
+                    arrayElement.classList.add('json-array');
+                    json.forEach(item => renderJSON(item, arrayElement));
+                    container.appendChild(arrayElement);
+                } else if (typeof json === 'object' && json !== null) {
+                    const objectElement = document.createElement('div');
+                    objectElement.classList.add('json-object');
+                    for (const key in json) {
+                        if (json.hasOwnProperty(key)) {
+                            const keyElement = document.createElement('div');
+                            keyElement.classList.add('json-key');
+                            keyElement.textContent = key + ':';
+                            objectElement.appendChild(keyElement);
+                            renderJSON(json[key], objectElement);
+                        }
+                    }
+                    container.appendChild(objectElement);
+                } else {
+                    const valueElement = document.createElement('div');
+                    valueElement.classList.add('json-value');
+                    valueElement.textContent = json;
+                    container.appendChild(valueElement);
+                }
+            }
+
+            // Initial render of content.json
+            renderContentJSON();
+        });
+    </script>
+</body>
+</html>
