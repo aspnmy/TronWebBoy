@@ -4,8 +4,8 @@ const fs = require('fs').promises;
 const path = require('path');
 
 const app = express();
-const port = 3999;
-const dataDir = './data';
+const port = 4999;
+const dataDir = '../data';
 const API_KEY = '74585769-5708-40c8-9db0-e4f5fd8c570d'; // 设置你的API密钥
 
 // 中间件
