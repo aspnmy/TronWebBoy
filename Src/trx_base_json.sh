@@ -237,7 +237,7 @@ parse_and_address_format_times() {
 get_balance_by_address() {
     local address="$1"
     local api_url="https://api.trongrid.io/v1/accounts/${address}"
-    local TRON_PRO_API_KEY="74585769-5708-40c8-9db0-e4f5fd8c570d"
+    local TRON_PRO_API_KEY="Api-key"
     # 发送 HTTP GET 请求
     local response=$(curl -s -H "Content-Type: application/json" -H "TRON-PRO-API-KEY: ${TRON_PRO_API_KEY}" "$api_url")
 

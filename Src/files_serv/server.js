@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const port = 4999;
 const dataDir = '../data';
-const API_KEY = '74585769-5708-40c8-9db0-e4f5fd8c570d'; // 设置你的API密钥
+const API_KEY = 'Api-key'; // 设置你的API密钥
 
 // 中间件
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 自定义头中间件
 const customHeaderMiddleware = (req, res, next) => {
   // 设置自定义头
-  res.setHeader('X-Custom-Header', '74585769-5708-40c8-9db0-e4f5fd8c570d');
+  res.setHeader('X-Custom-Header', 'Api-key');
   // 允许所有跨域请求
   res.setHeader('Access-Control-Allow-Origin', '*');
   // 其他自定义头...
